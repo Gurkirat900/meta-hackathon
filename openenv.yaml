@@ -1,0 +1,56 @@
+# =============================================================================
+# openenv.yaml
+# =============================================================================
+# This is the "ID card" for your environment.
+# OpenEnv reads this file to understand what your environment is.
+# The validator (openenv validate) checks this file first.
+#
+# Think of it like package.json in Node.js — it describes the project.
+# =============================================================================
+
+spec_version: 1                         # OpenEnv spec version — always 1 for now
+
+name: resume-screening-env              # Your environment's name (used as HF Space name)
+
+type: environment                       # This is an environment (not a tool or wrapper)
+
+runtime: docker                         # How it runs — we use Docker
+
+app: server/app.py                      # Where the FastAPI app is defined
+
+port: 8000                              # Which port the server listens on
+
+# Short description shown on Hugging Face
+description: >
+  A resume screening environment where AI agents learn to evaluate job
+  candidates. Simulates real HR workflows: matching resumes to jobs,
+  ranking candidates, and generating structured screening reports.
+  3 tasks with increasing difficulty from simple binary decisions to
+  full structured analysis.
+
+# Who built this
+author: your-hf-username                # CHANGE THIS to your HF username
+
+# Tags help people find your environment on HF
+tags:
+  - openenv
+  - resume-screening
+  - hr
+  - recruitment
+  - classification
+  - ranking
+  - real-world
+
+# Difficulty range
+tasks:
+  - name: match_resume_to_job
+    difficulty: easy
+    description: "Decide if a single candidate qualifies for a job (binary decision)"
+
+  - name: rank_candidates
+    difficulty: medium
+    description: "Rank 5 candidates from best to worst fit for a job"
+
+  - name: full_screening_report
+    difficulty: hard
+    description: "Generate a full structured screening report with skills analysis and red flags"
